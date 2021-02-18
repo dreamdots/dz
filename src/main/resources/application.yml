@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://194.36.88.201:5432/books
+    username: admin
+    password: 890lpuvnm12
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+    open-in-view: false
+    show-sql: true
+
+    hibernate:
+      ddl-auto: create
+server:
+  port: 8080

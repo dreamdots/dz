@@ -1,0 +1,99 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <style>
+        *,
+        *::after,
+        *::before {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -o-box-sizing: border-box;
+            -ms-box-sizing: border-box;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu {
+            background: #444;
+            position: relative;
+            overflow: hidden;
+            height: 40px;
+            margin: 0px 0
+        }
+
+        .menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            left: 50%;
+            float: left;
+            font: 14px Arial, Helvetica, sans-serif;
+            height: 70px
+        }
+
+        .menu ul li {
+            position: relative;
+            left: -50%;
+            float: left;
+            margin: 0 10px;
+            height: 40px
+        }
+
+        .menu ul li a {
+            color: #fff;
+            display: block;
+            text-decoration: none;
+            padding: 0 15px;
+            line-height: 40px;
+        }
+
+        .menu ul li a:hover {
+            background-color: #666;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div ng-controller="uploadC">
+    <div class="menu">
+        <ul>
+            <li><a href="main.html">Главная</a></li>
+            <li><a href="upload.html">Добавить книгу/жанр</a></li>
+            <li><a href="find.html">Найти книгу</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <button ng-show="isLoadBook" ng-click="isLoadBook = false">Загрузить жанр</button>
+        <button ng-show="!isLoadBook" ng-click="isLoadBook = true">Загрузить книгу</button>
+
+        <div ng-show="isLoadBook">
+            <input type="text" ng-model="book.title" placeholder="Название">
+            <input type="text" ng-model="book.pageCount" placeholder="Количество страниц">
+            <input type="text" ng-model="book.author" placeholder="Автор">
+            <input type="text" ng-model="book.publisher" placeholder="Издательство">
+            <input type="text" ng-model="book.publishDate" placeholder="Дата издания">
+            <input type="text" ng-model="book.genre" placeholder="Жанр">
+            <button ng-click="addBook()">Добавить книгу</button>
+        </div>
+
+        <div ng-show="!isLoadBook">
+            <input type="text" ng-model="genre.title" placeholder="Название">
+            <button ng-click="addGenre()">Добавить жанр</button>
+        </div>
+    </div>
+</div>
+<script src="../js/lib/angular.min.js"></script>
+<script type="text/javascript">angular.module('myApp', []);</script>
+<script src="../js/controllers/upload.js"></script>
+</body>
+</html>

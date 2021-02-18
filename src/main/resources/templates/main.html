@@ -1,0 +1,85 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <style>
+        *,
+        *::after,
+        *::before {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -o-box-sizing: border-box;
+            -ms-box-sizing: border-box;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu {
+            background: #444;
+            position: relative;
+            overflow: hidden;
+            height: 40px;
+            margin: 0px 0
+        }
+
+        .menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            left: 50%;
+            float: left;
+            font: 14px Arial, Helvetica, sans-serif;
+            height: 70px
+        }
+
+        .menu ul li {
+            position: relative;
+            left: -50%;
+            float: left;
+            margin: 0 10px;
+            height: 40px
+        }
+
+        .menu ul li a {
+            color: #fff;
+            display: block;
+            text-decoration: none;
+            padding: 0 15px;
+            line-height: 40px;
+        }
+
+        .menu ul li a:hover {
+            background-color: #666;
+        }
+    </style>
+</head>
+<body>
+<div ng-controller="mainC" ng-init="init()">
+    <div class="menu">
+        <ul>
+            <li><a href="main.html">Главная</a></li>
+            <li><a href="upload.html">Добавить книгу/жанр</a></li>
+            <li><a href="find.html">Найти книгу</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h2> Список всех книг: </h2>
+        <li ng-repeat="book in books">
+            <p>Название: {{book.title}}, автор: {{book.author}}, издательство: {{book.publisher}}, год издания:
+                {{book.publishDate}}, жанр: {{book.genre}}, количество страниц {{book.pageCount}}.</p>
+        </li>
+
+        <h2> Список всех жанров: </h2>
+        <li ng-repeat="genre in genres">
+            <p>{{genre.title}}</p>
+        </li>
+    </div>
+</div>
+<script src="../js/lib/angular.min.js"></script>
+<script type="text/javascript">angular.module('myApp', []);</script>
+<script src="../js/controllers/main.js"></script>
+</body>
+</html>
